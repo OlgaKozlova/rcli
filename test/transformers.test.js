@@ -1,23 +1,30 @@
 import { describe, it } from 'mocha';
 import chai from 'chai';
-
+import TestData from './transformers.test.json';
 import {
     camelize,
+    snakify,
+    capitalize,
+    decapitalize,
 } from '../src/transformers.js';
 
 const assert = chai.assert;
 
-describe('String transformers tests', () => {
-    describe('Function "camelize" tests', () => {
-        it('Function "camelize" not works correct with dashed string', () => {
-            const source = 'hello-world1';
-            const expectedResult = 'helloWorld1';
+const functions = {
+    camelize,
+    snakify,
+    capitalize,
+    decapitalize,
+};
 
-            assert.strictEqual(
-                expectedResult,
-                camelize(source),
-                'Function "camelize" not works correct with dashed string',
-            );
+describe('String transformers tests', () => {
+    TestData.forEach((testSuit) => {
+        describe(testSuit.description, () => {
+            testSuit.tests.forEach((test) => {
+                it(test.description, () => {
+                    assert.strictEqual(functions[testSuit.function](test.source), test.expected);
+                });
+            });
         });
     });
 });

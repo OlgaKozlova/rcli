@@ -1,0 +1,71 @@
+[
+  {
+    "description": "Function \"camelize\" tests",
+    "function": "camelize",
+    "tests": [
+      {
+        "description": "Function \"camelize\" not works correct with dashed string",
+        "source": "hello-world",
+        "expected": "helloWorld"
+      },
+      {
+        "description": "Function \"camelize\" not works correct with underscored string",
+        "source": "hello_world",
+        "expected": "helloWorld"
+      }
+    ]
+  },
+  {
+    "description": "Function \"snakify\" tests",
+    "function": "snakify",
+    "tests": [
+      {
+        "description": "Function \"snakify\" not works correct with dashed string",
+        "source": "hello-world",
+        "expected": "HELLO_WORLD"
+      },
+      {
+        "description": "Function \"snakify\" not works correct with underscored string",
+        "source": "hello_world",
+        "expected": "HELLO_WORLD"
+      },
+      {
+        "description": "Function \"snakify\" not works correct with camelCased string",
+        "source": "helloWorld",
+        "expected": "HELLO_WORLD"
+      }
+    ]
+  },
+  {
+    "description": "Function \"capitalize\" tests",
+    "function": "capitalize",
+    "tests": [
+      {
+        "description": "Function \"capitalize\" not works correct with capitalized string",
+        "source": "Hello-world",
+        "expected": "Hello-world"
+      },
+      {
+        "description": "Function \"capitalize\" not works correct with non-capitalized string",
+        "source": "Hello-world",
+        "expected": "Hello-world"
+      }
+    ]
+  },
+  {
+    "description": "Function \"decapitalize\" tests",
+    "function": "decapitalize",
+    "tests": [
+      {
+        "description": "Function \"decapitalize\" not works correct with capitalized string",
+        "source": "Hello-world",
+        "expected": "hello-world"
+      },
+      {
+        "description": "Function \"decapitalize\" not works correct with non-capitalized string",
+        "source": "Hello-world",
+        "expected": "hello-world"
+      }
+    ]
+  }
+]

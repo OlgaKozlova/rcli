@@ -5,11 +5,20 @@
   "main": "index.js",
   "scripts": {
     "lint": "eslint ./ --cache --ignore-pattern .gitignore",
-    "test": "echo \"Error: no test specified\"",
+    "test": "mocha --compilers js:babel-core/register ./test/",
     "precommit": "lint-staged"
   },
-  "pre-commit": [ "lint", "test" ],
-  "author": "",
+  "babel": {
+    "presets": [
+      "stage-3",
+      "latest"
+    ]
+  },
+  "pre-commit": [
+    "lint",
+    "test"
+  ],
+  "author": "Olga Kozlova",
   "license": "ISC",
   "dependencies": {
     "ejs": "^2.5.6",
@@ -17,6 +26,9 @@
     "humps": "^2.0.0"
   },
   "devDependencies": {
+    "babel-core": "^6.25.0",
+    "babel-preset-latest": "^6.24.1",
+    "babel-preset-stage-3": "^6.24.1",
     "chai": "^4.0.2",
     "eslint": "^4.0.0",
     "eslint-config-airbnb-base": "^11.2.0",
