@@ -12,8 +12,8 @@ const assert = chai.assert;
 describe('String transformers tests', () => {
     describe('Function "camelize" tests', () => {
         it('Function "camelize" not works correct with dashed string', () => {
-            const source = 'hello-world';
-            const expectedResult = 'helloWorld';
+            const source = 'hello-world1';
+            const expectedResult = 'helloWorld1';
 
             assert.strictEqual(
                 expectedResult,
