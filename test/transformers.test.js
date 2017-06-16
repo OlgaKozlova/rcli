@@ -1,10 +1,8 @@
 import { describe, it } from 'mocha';
 import chai from 'chai';
+
 import {
     camelize,
-    snakify,
-    decapitalize,
-    capitalize,
 } from '../src/transformers.js';
 
 const assert = chai.assert;

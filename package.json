@@ -4,8 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "lint": "eslint ./ --cache --ignore-pattern .gitignore"
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "lint": "eslint ./ --cache --ignore-pattern .gitignore",
+    "test": "echo \"Error: no test specified\"",
     "precommit": "lint-staged"
   },
   "pre-commit": [ "lint", "test" ],

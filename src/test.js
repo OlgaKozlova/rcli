@@ -1,18 +1,14 @@
 const ejs = require('ejs');
 const fs = require('fs-extra');
-const humps = require('humps');
+
 
 const settings = {
     featureName: 'FirstView',
     fields: ['firstName', 'lastName'],
     buttons: ['buttonOne', 'buttonTwo'],
-    transformators: {
-        toCamelCase: (str) => humps.camelize(str),
-        toSnakeUpperCase: (str) => humps.depascalize(humps.pascalize(str)).toUpperCase()
-    }
 };
 
-/*const file1 = fs.readFileSync('../templates/constants.ejs', 'utf8');
+/* const file1 = fs.readFileSync('../templates/constants.ejs', 'utf8');
 const template1 = ejs.compile(file1);
 const result1 = template1(settings);
 console.log(result1);

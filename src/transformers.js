@@ -10,4 +10,4 @@ export const decapitalize = string => string.splice(0, 1, string[0].toLowerCase(
 
 export const camelize = string => hCamelize(string);
 
-export const snakify = string =>  hDepascalize(hPascalize(string)).toUpperCase();
+export const snakify = string => hDepascalize(hPascalize(string)).toUpperCase();
