@@ -1,0 +1,28 @@
+import {
+<% fields.forEach(function(field){ -%>
+<% const transformedField = transformators.toSnakeUpperCase(field); -%>
+    SET_<%- transformedField %>_ACTION, %>
+<% }); -%>
+<% buttons.forEach(function(button){ -%>
+<% const transformedButton = transformators.toSnakeUpperCase(button); -%>
+    HANDLE_<%- transformedButton %>_ACTION, %>
+<% }); -%>
+} from constants.js
+
+export const <%= featureName %>Actions = {
+<% fields.forEach(function(field){ -%>
+<% const transformedField = transformators.toSnakeUpperCase(field); -%>
+    [ SET_<%- transformedField %>_ACTION %> ]: (<%- field %>) => ({
+        type: SET_<%- transformedField %>_ACTION, %>
+        payload: {
+            <%- field %>
+        }
+    }),
+<% }); -%>
+<% buttons.forEach(function(button){ -%>
+<% const transformed = transformators.toSnakeUpperCase(button); -%>
+    [ HANDLE_<%- transformed %>_ACTION %> ]: () => (dispatch, getState) => {
+
+    },
+<% }); -%>
+}

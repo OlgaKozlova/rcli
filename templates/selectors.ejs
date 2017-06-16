@@ -1,0 +1,13 @@
+import {createSelector} from 'reselect';
+
+<% fields.forEach(function(field){ -%>
+export const get<%- field %> = state['<%- featureName %>State'].get('<%- field %>');
+<% }); -%>
+
+export const <%- featureName %>ViewSelector = createSelector(
+    [ <% fields.forEach(function(field){ -%>get<%- field %>, <% }); -%>],
+    ( <% fields.forEach(function(field){ -%><%- field %>, <% }); -%>) => {
+        return {
+        }
+    }
+)

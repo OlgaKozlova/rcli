@@ -1,0 +1,10 @@
+const VIEW_NAME = <%= transformators.toSnakeUpperCase(featureName)  -%>_;
+
+<% fields.forEach(function(field){ -%>
+<% const transformedField = transformators.toSnakeUpperCase(field); -%>
+export const SET_<%- transformedField %>_ACTION = `${VIEW_NAME}SET_<%- transformedField -%>`;
+<% }); -%>
+<% buttons.forEach(function(button){ -%>
+<% const transformedButton = transformators.toSnakeUpperCase(button); -%>
+export const HANDLE_<%- transformedButton %>_ACTION = `${VIEW_NAME}HANDLE_<%- transformedButton -%>`;
+<% }); %>

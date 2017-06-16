@@ -1,0 +1,21 @@
+import {
+<% fields.forEach(function(field){ -%>
+<% const transformedField = transformators.toSnakeUpperCase(field); -%>
+    SET_<%- transformedField %>_ACTION, %>
+<% }); -%>
+} from constants.js
+
+export const <%= featureName %>Reducer = (state = {}, action) => {
+    switch(action.type) {
+<% fields.forEach(function(field){ -%>
+<% const transformedField = transformators.toSnakeUpperCase(field); -%>
+        case SET_<%- transformedField %>_ACTION %>: {
+            return state.set('<%- field %>', action.payload.<%- field %>);
+        }
+<% }); -%>
+        default: {
+            return state;
+        }
+    }
+}
+
