@@ -4,18 +4,11 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "lint": "eslint ./ --cache --ignore-pattern .gitignore"
     "test": "echo \"Error: no test specified\" && exit 1",
     "precommit": "lint-staged"
   },
-  "lint-staged": {
-    "*.js": [
-      "eslint --fix",
-      "git add"
-    ],
-    "*": [
-      "test"
-    ]
-  },
+  "pre-commit": [ "lint", "test" ],
   "author": "",
   "license": "ISC",
   "dependencies": {
@@ -30,6 +23,7 @@
     "eslint-plugin-import": "^2.3.0",
     "husky": "^0.13.4",
     "lint-staged": "^3.6.1",
-    "mocha": "^3.4.2"
+    "mocha": "^3.4.2",
+    "pre-commit": "^1.2.2"
   }
 }
