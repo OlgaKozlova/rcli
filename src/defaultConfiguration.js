@@ -1,33 +1,64 @@
 import * as transformers from './transformers.js';
+import { getParsedCommandLine } from './commandLineParser.js';
 
 export const defaultConfiguration = {
-    commands: {
-        generate1: () => 'rrc generate bundle defaultSet SomeService -f field1 field2 field3',
+    optionMarker: {
+        type: 'postfix',
+        value: ':',
     },
-    bundles: {
-        defaultSet: {
-            c: {
-                templateFilePath: '/templates/constants.ejs',
-                destinationPath: '/constants/${feature}Constants.js',
-                shouldGenerateFolder: false,
-                indexFilePath: './index.js',
-                indexTemplate: '',
+    commandLineParser: getParsedCommandLine,
+    transformers,
+    commands: {
+        generate: {
+            configuration: {
+                parameters: [
+                    {
+                        name: 'bundleName',
+                        isRequired: true,
+                    },
+                    {
+                        name: 'featureName',
+                        isRequired: true,
+                    },
+                ],
             },
-            a: {
+            executor: () => {},
+            data: {
+                defaultSet: {
+                    c: {
+                        templateFilePath: '/templates/constants.ejs',
+                        // eslint-disable-next-line no-template-curly-in-string
+                        destinationPath: '/constants/${feature}Constants.js',
+                        shouldGenerateFolder: false,
+                        indexFilePath: './index.js',
+                        indexTemplate: '',
+                        indexAction: 'appendBottom',
+                    },
+                    a: {
 
-            },
-            i: {
+                    },
+                    i: {
 
-            },
-            r: {
+                    },
+                    r: {
 
-            },
-            s: {
+                    },
+                    s: {
 
+                    },
+                },
             },
         },
+        help: {
+            configuration: {
+                parameters: [
+                    {
+                        name: 'commands',
+                        isRequired: false,
+                    },
+                ],
+            },
+            executor: () => {},
+        },
     },
-    transformers,
 };
-
-console.log(defaultConfiguration);
