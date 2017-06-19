@@ -25,11 +25,10 @@ const getTransformedOptions = (optionsConfiguration) => {
 
     optionsConfiguration.forEach((option) => {
         if (isOption(option)) {
-            currentOption = option;
+            currentOption = option.replace(OPTION_POSTFIX, '');
+            options[currentOption] = [];
         } else {
-            options[currentOption] = options[currentOption]
-                ? options[currentOption].concat(option)
-                : [option];
+            options[currentOption] = options[currentOption].concat(option);
         }
     });
 

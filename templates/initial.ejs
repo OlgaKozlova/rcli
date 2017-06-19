@@ -1,7 +1,9 @@
+<% var fields = fields || [] -%>
+<% var buttons = buttons || [] -%>
 import Immutable from 'immutable';
 
-export const <%= featureName%>InitialState = Immutable.Map({
+export const <%= featureName %>InitialState = new Immutable.Map({
 <% fields.forEach(function(field){ -%>
-    <%- field %>,
+    <%- field %>: '',
 <% }); -%>
-})
+});

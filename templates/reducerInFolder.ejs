@@ -5,7 +5,7 @@ import {
 <% const transformedField = t.snakify(field); -%>
     SET_<%- transformedField %>_ACTION,%>
 <% }); -%>
-} from '../constants/<%= t.capitalize(featureName) -%>Constants.js';
+} from './<%= t.capitalize(featureName) -%>Constants.js';
 
 export const <%= featureName %>Reducer = (state = {}, action) => {
     switch (action.type) {

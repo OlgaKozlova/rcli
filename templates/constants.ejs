@@ -1,10 +1,12 @@
-const VIEW_NAME = <%= transformators.toSnakeUpperCase(featureName)  -%>_;
+<% var fields = fields || [] -%>
+<% var buttons = buttons || [] -%>
+const VIEW_NAME = '<%= t.snakify(featureName)  -%>_';
 
 <% fields.forEach(function(field){ -%>
-<% const transformedField = transformators.toSnakeUpperCase(field); -%>
+<% const transformedField = t.snakify(field); -%>
 export const SET_<%- transformedField %>_ACTION = `${VIEW_NAME}SET_<%- transformedField -%>`;
 <% }); -%>
 <% buttons.forEach(function(button){ -%>
-<% const transformedButton = transformators.toSnakeUpperCase(button); -%>
-export const HANDLE_<%- transformedButton %>_ACTION = `${VIEW_NAME}HANDLE_<%- transformedButton -%>`;
+<% const transformedButton = t.snakify(button); -%>
+export const HANDLE_<%- transformedButton %>_BUTTON_ACTION = `${VIEW_NAME}HANDLE_<%- transformedButton -%>`;
 <% }); %>

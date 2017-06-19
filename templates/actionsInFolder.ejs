@@ -9,7 +9,7 @@ import {
 <% const transformedButton = t.snakify(button); -%>
     HANDLE_<%- transformedButton %>_BUTTON_ACTION,%>
 <% }); -%>
-} from '../constants/<%= t.capitalize(featureName) -%>Constants.js';
+} from './<%= t.capitalize(featureName) -%>Constants.js';
 
 export const <%= featureName %>Actions = {
 <% fields.forEach(function(field){ -%>
