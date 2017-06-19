@@ -8,6 +8,9 @@
     "test": "mocha --compilers js:babel-core/register ./test/",
     "precommit": "lint-staged"
   },
+  "bin": {
+    "rcli": "bin/rcli.js"
+  },
   "babel": {
     "presets": [
       "stage-3",
