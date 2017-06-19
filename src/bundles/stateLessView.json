@@ -1,13 +1,13 @@
 {
   "constants": {
     "templateType": "file",
-    "template": "./templates/constants.ejs",
+    "template": "./src/templates/constants.ejs",
     "destination": "./root/constants/<%= t.capitalize(featureName) %>Constants.js",
     "action": "create"
   },
   "actions": {
     "templateType": "file",
-    "template": "./templates/actions.ejs",
+    "template": "./src/templates/actions.ejs",
     "destination": "./root/actions/<%= t.capitalize(featureName) %>Actions.js",
     "action": "create"
   },
@@ -19,7 +19,7 @@
   },
   "initialState": {
     "templateType": "file",
-    "template": "./templates/initial.ejs",
+    "template": "./src/templates/initial.ejs",
     "destination": "./root/initials/<%= t.capitalize(featureName) %>Initial.js",
     "action": "create"
   },
@@ -31,7 +31,7 @@
   },
   "reducer": {
     "templateType": "file",
-    "template": "./templates/reducer.ejs",
+    "template": "./src/templates/reducer.ejs",
     "destination": "./root/reducers/<%= t.capitalize(featureName) %>Reducer.js",
     "action": "create"
   },
@@ -43,13 +43,13 @@
   },
   "selector": {
     "templateType": "file",
-    "template": "./templates/selectors.ejs",
+    "template": "./src/templates/selectors.ejs",
     "destination": "./root/selectors/<%= t.capitalize(featureName) %>Selectors.js",
     "action": "create"
   },
   "view": {
     "templateType": "file",
-    "template": "./templates/view.ejs",
+    "template": "./src/templates/view.ejs",
     "destination": "./root/views/<%= t.capitalize(featureName) %>.jsx",
     "action": "create"
   },

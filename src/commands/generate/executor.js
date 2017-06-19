@@ -37,20 +37,24 @@ export default function (parameters, options, configuration) {
     const setName = parameters[1];
 
     const bundleConfiguration = configuration.bundles[bundleName];
+    const settings = {
+        ...options,
+        featureName: setName,
+        t,
+    };
 
     Object.keys(bundleConfiguration).forEach((key) => {
         const config = bundleConfiguration[key];
-        const settings = {
-            ...options,
-            featureName: setName,
-            t,
-        };
-
         const sourceTemplate = getTemplate(config.templateType, config.template);
         const compiledSourceTemplate = getCompiledTemplate(sourceTemplate, settings);
         const destinationTemplate = getTemplate('string', config.destination);
         const compiledDestinationTemplate = getCompiledTemplate(destinationTemplate, settings);
 
+        console.log(`${key} is generating...`);
+
         performAction(config.action, compiledSourceTemplate, compiledDestinationTemplate);
     });
+
+    console.log('-------');
+    console.log('success');
 }

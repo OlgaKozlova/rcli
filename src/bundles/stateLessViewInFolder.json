@@ -1,13 +1,13 @@
 {
   "constants": {
     "templateType": "file",
-    "template": "./templates/constants.ejs",
+    "template": "./_rcli_templates/constants.ejs",
     "destination": "./root/<%= t.capitalize(featureName) %>/<%= t.capitalize(featureName) %>Constants.js",
     "action": "create"
   },
   "actions": {
     "templateType": "file",
-    "template": "./templates/actionsInFolder.ejs",
+    "template": "./_rcli_templates/actionsInFolder.ejs",
     "destination": "./root/<%= t.capitalize(featureName) %>/<%= t.capitalize(featureName) %>Actions.js",
     "action": "create"
   },
@@ -17,39 +17,15 @@
     "destination": "./root/actions.js",
     "action": "appendBottom"
   },
-  "initialState": {
-    "templateType": "file",
-    "template": "./templates/initial.ejs",
-    "destination": "./root/<%= t.capitalize(featureName) %>/<%= t.capitalize(featureName) %>Initial.js",
-    "action": "create"
-  },
-  "initialStateIndex": {
-    "templateType": "string",
-    "template": "export { <%= featureName %>InitialState } from './<%= t.capitalize(featureName) %>/<%= t.capitalize(featureName) %>Initial.js';\n",
-    "destination": "./root/initials.js",
-    "action": "appendBottom"
-  },
-  "reducer": {
-    "templateType": "file",
-    "template": "./templates/reducerInFolder.ejs",
-    "destination": "./root/<%= t.capitalize(featureName) %>/<%= t.capitalize(featureName) %>Reducer.js",
-    "action": "create"
-  },
-  "reducerIndex": {
-    "templateType": "string",
-    "template": "export { <%= featureName %>Reducer } from './<%= t.capitalize(featureName) %>/<%= t.capitalize(featureName) %>Reducer.js';\n",
-    "destination": "./root/reducers.js",
-    "action": "appendBottom"
-  },
   "selector": {
     "templateType": "file",
-    "template": "./templates/selectors.ejs",
+    "template": "./_rcli_templates/selectors.ejs",
     "destination": "./root/<%= t.capitalize(featureName) %>/<%= t.capitalize(featureName) %>Selectors.js",
     "action": "create"
   },
   "view": {
     "templateType": "file",
-    "template": "./templates/viewInFolder.ejs",
+    "template": "./_rcli_templates/viewInFolder.ejs",
     "destination": "./root/<%= t.capitalize(featureName) %>/<%= t.capitalize(featureName) %>.jsx",
     "action": "create"
   },
