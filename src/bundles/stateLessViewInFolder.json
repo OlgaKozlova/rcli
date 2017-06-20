@@ -1,0 +1,38 @@
+{
+  "constants": {
+    "templateType": "file",
+    "template": "constants.ejs",
+    "destination": "<%= root %>/<%= t.capitalize(featureName) %>/<%= t.capitalize(featureName) %>Constants.js",
+    "action": "create"
+  },
+  "actions": {
+    "templateType": "file",
+    "template": "actionsInFolder.ejs",
+    "destination": "<%= root %>/<%= t.capitalize(featureName) %>/<%= t.capitalize(featureName) %>Actions.js",
+    "action": "create"
+  },
+  "actionsIndex": {
+    "templateType": "string",
+    "template": "export { <%= featureName %>Actions } from './<%= t.capitalize(featureName) %>/<%= t.capitalize(featureName) %>Actions.js';\n",
+    "destination": "<%= root %>/actions.js",
+    "action": "appendBottom"
+  },
+  "selector": {
+    "templateType": "file",
+    "template": "selectors.ejs",
+    "destination": "<%= root %>/<%= t.capitalize(featureName) %>/<%= t.capitalize(featureName) %>Selectors.js",
+    "action": "create"
+  },
+  "view": {
+    "templateType": "file",
+    "template": "viewInFolder.ejs",
+    "destination": "<%= root %>/<%= t.capitalize(featureName) %>/<%= t.capitalize(featureName) %>.jsx",
+    "action": "create"
+  },
+  "viewIndex": {
+    "templateType": "string",
+    "template": "export { <%= featureName %> } from './<%= t.capitalize(featureName) %>/<%= t.capitalize(featureName) %>.jsx';\n",
+    "destination": "<%= root %>/views.js",
+    "action": "appendBottom"
+  }
+}

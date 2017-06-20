@@ -1,0 +1,28 @@
+<% var fields = fields || [] -%>
+<% var buttons = buttons || [] -%>
+import { createSelector } from 'reselect';
+
+<% fields.forEach(function(field){ -%>
+export const get<%- t.capitalize(field) %> = state => state.<%- featureName %>State.get('<%- field %>');
+<% }); -%>
+
+export const <%- featureName %>Selector = createSelector(
+    [
+<% fields.forEach(function(field){ -%>
+        get<%- t.capitalize(field) %>,
+<% });-%>
+    ],
+    (
+<% fields.forEach(function(field){ -%>
+        <%- field %>,
+<% });-%>
+    ) => {
+        // place code for view selector here
+        return {
+            // place other computed properties here
+<% fields.forEach(function(field){ -%>
+            <%- field %>,
+<% });-%>
+        };
+    },
+);

@@ -1,0 +1,62 @@
+{
+  "constants": {
+    "templateType": "file",
+    "template": "constants.ejs",
+    "destination": "<%= root %>/constants/<%= t.capitalize(featureName) %>Constants.js",
+    "action": "create"
+  },
+  "actions": {
+    "templateType": "file",
+    "template": "actions.ejs",
+    "destination": "<%= root %>/actions/<%= t.capitalize(featureName) %>Actions.js",
+    "action": "create"
+  },
+  "actionsIndex": {
+    "templateType": "string",
+    "template": "export { <%= featureName %>Actions } from './<%= t.capitalize(featureName) %>Actions.js';\n",
+    "destination": "<%= root %>/actions/index.js",
+    "action": "appendBottom"
+  },
+  "initialState": {
+    "templateType": "file",
+    "template": "initial.ejs",
+    "destination": "<%= root %>/initials/<%= t.capitalize(featureName) %>Initial.js",
+    "action": "create"
+  },
+  "initialStateIndex": {
+    "templateType": "string",
+    "template": "export { <%= featureName %>InitialState } from './<%= t.capitalize(featureName) %>Initial.js';\n",
+    "destination": "<%= root %>/initials/index.js",
+    "action": "appendBottom"
+  },
+  "reducer": {
+    "templateType": "file",
+    "template": "./src/templates/reducer.ejs",
+    "destination": "<%= root %>/reducers/<%= t.capitalize(featureName) %>Reducer.js",
+    "action": "create"
+  },
+  "reducerIndex": {
+    "templateType": "string",
+    "template": "export { <%= featureName %>Reducer } from './<%= t.capitalize(featureName) %>Reducer.js';\n",
+    "destination": "<%= root %>/reducers/index.js",
+    "action": "appendBottom"
+  },
+  "selector": {
+    "templateType": "file",
+    "template": "selectors.ejs",
+    "destination": "<%= root %>/selectors/<%= t.capitalize(featureName) %>Selectors.js",
+    "action": "create"
+  },
+  "view": {
+    "templateType": "file",
+    "template": "view.ejs",
+    "destination": "<%= root %>/views/<%= t.capitalize(featureName) %>.jsx",
+    "action": "create"
+  },
+  "viewIndex": {
+    "templateType": "string",
+    "template": "export { <%= featureName %> } from './<%= t.capitalize(featureName) %>.jsx';\n",
+    "destination": "<%= root %>/views/index.js",
+    "action": "appendBottom"
+  }
+}
