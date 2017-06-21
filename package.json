@@ -11,6 +11,12 @@
     "eslint",
     "test"
   ],
+  "babel": {
+    "presets": [
+      "stage-3",
+      "latest"
+    ]
+  },
   "bin": {
     "rcli": "bin/rcli.sh"
   },
