@@ -11,32 +11,35 @@ const getValidResult = () => ({
     errors: [],
 });
 
-function checkMinParams(parameters) {
-    return (parameters.length > 2)
-        ? ['Maximum 2 parameters expected']
+function checkParamsCount(parameters) {
+    return (parameters.length !== 2)
+        ? ['This command expected 2 parameters. Check you command line']
         : [];
 }
 
-function checkMaxParams(parameters) {
-    return (parameters.length < 1)
-        ? ['Maximum 2 parameters expected']
-        : [];
+function checkBundle(parameters, conf) {
+    return conf.bundles[parameters[0]]
+        ? []
+        : [`Failed to find ${parameters[0]} bundle in configuration`];
 }
 
 function checkTemplatesExistency(parameters, options, conf) {
     const bundle = conf.bundles[parameters[0]];
 
-    return Object.keys(bundle)
-        .filter(set => set.templateType === 'file'
-            && (!fs.pathExistsSync(path.join(conf.templates, set.template))
-            || !fs.pathExistsSync(path.join(conf.defaultTemplates, set.template))))
-        .map(set => `Invalid filepath found in configuration: ${set.sourceFileName}`);
+    return bundle
+        ? Object.keys(bundle)
+            .filter(key => bundle[key].templateType === 'file'
+                 && (!fs.pathExistsSync(path.join(conf.templates, bundle[key].template))
+                 && !fs.pathExistsSync(path.join(conf.defaultTemplates, bundle[key].template))))
+            .map(key => `Non-existing template found in configuration: ${bundle[key].template}.
+            Check "${key}" configuration for "${parameters[0]}" bundle.`)
+        : [];
 }
 
 module.exports = function validate(parameters, options, conf) {
     const errors = [
-        checkMinParams.bind(null, parameters),
-        checkMaxParams.bind(null, parameters),
+        checkParamsCount.bind(null, parameters),
+        checkBundle.bind(null, parameters, conf),
         checkTemplatesExistency.bind(null, parameters, options, conf),
     ].reduce((result, current) => result.concat(current()), []);
 

@@ -18,7 +18,7 @@
     ]
   },
   "bin": {
-    "rcli": "bin/rcli.sh"
+    "rcli": "./bin/rcli.js"
   },
   "author": "Olga Kozlova",
   "license": "ISC",
