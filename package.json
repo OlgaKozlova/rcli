@@ -4,16 +4,16 @@
   "description": "Scaffolding library for react and redux-react projects",
   "main": "index.js",
   "scripts": {
-    "lint": "eslint ./ --cache --ignore-pattern .gitignore",
+    "eslint": "eslint ./ --cache --ignore-pattern .gitignore",
     "test": "mocha --compilers js:babel-core/register ./test/"
   },
+  "pre-commit": [
+    "eslint",
+    "test"
+  ],
   "bin": {
     "rcli": "bin/rcli.sh"
   },
-  "pre-commit": [
-    "lint",
-    "test"
-  ],
   "author": "Olga Kozlova",
   "license": "ISC",
   "dependencies": {
