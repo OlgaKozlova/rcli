@@ -1,8 +1,0 @@
-{
-  "constants": {
-    "templateType": "file",
-    "template": "constants.ejs",
-    "destination": "<%= root %>/constants/<%= t.capitalize(featureName) %>Constants.js",
-    "action": "create"
-  }
-}
