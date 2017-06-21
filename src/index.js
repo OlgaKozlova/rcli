@@ -1,23 +1,19 @@
-import { getParsedCommandLine } from './commandLineParser.js';
-import commands from './commands/index';
-import bundles from './bundles/index';
-// TODO: dynamic loading
-import customConfiguraton from '../.rcli.config.js';
+const commandLineParser = require('./commandLineParser.js');
+const commands = require('./commands');
+const bundles = require('./bundles');
+const customConfiguraton = require('./../.rcli.config.js');
 
 const args = process.argv;
 const commandLine = args.slice(2);
 
-const commandLineOptions = getParsedCommandLine(commandLine);
+const commandLineOptions = commandLineParser.getParsedCommandLine(commandLine);
 const { command, parameters, options } = commandLineOptions;
 
 const conf = {
     root: customConfiguraton.root || './defaultRoot',
     templates: customConfiguraton.templates,
     defaultTemplates: './dist/templates/',
-    bundles: {
-        ...bundles,
-        ...customConfiguraton.bundles,
-    },
+    bundles: Object.assign({}, bundles, customConfiguraton.bundles),
 };
 
 const currentCommand = commands[command];

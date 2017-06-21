@@ -1,7 +1,7 @@
-var bundles = require('./myBundles').default;
+var bundles = require('./myBundles');
 
 module.exports = {
-    root: './MyRoot',
+    root: './MyRoot2',
     templates: './myTemplates',
     bundles
 };

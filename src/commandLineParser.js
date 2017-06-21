@@ -40,7 +40,7 @@ const getTransformedOptions = (optionsConfiguration) => {
  * @param commandLine
  * @returns {{command: (string|null), parameters: (Array.<string>), options: {}}}
  */
-export const getParsedCommandLine = (commandLine) => {
+module.exports.getParsedCommandLine = (commandLine) => {
     const indexes = [1, commandLine.findIndex(isOption)];
     const splitted = getArraySplitByIndexes(commandLine, indexes);
 

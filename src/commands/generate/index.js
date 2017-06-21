@@ -1,7 +1,7 @@
-import executor from './executor.js';
-import validator from './validator.js';
+const executor = require('./executor.js');
+const validator = require('./validator.js');
 
-export default {
+module.exports = {
     executor,
     validator,
 };

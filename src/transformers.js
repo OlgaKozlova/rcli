@@ -1,13 +1,13 @@
-import {
-    camelize as hCamelize,
-    depascalize as hDepascalize,
-    pascalize as hPascalize,
-} from 'humps';
+const humps = require('humps');
 
-export const capitalize = string => string.charAt(0).toUpperCase() + string.slice(1);
+const hCamelize = humps.camelize;
+const hDepascalize = humps.depascalize;
+const hPascalize = humps.pascalize;
 
-export const decapitalize = string => string.charAt(0).toLowerCase() + string.slice(1);
+module.exports.capitalize = string => string.charAt(0).toUpperCase() + string.slice(1);
 
-export const camelize = string => hCamelize(string);
+module.exports.decapitalize = string => string.charAt(0).toLowerCase() + string.slice(1);
 
-export const snakify = string => hDepascalize(hPascalize(string)).toUpperCase();
+module.exports.camelize = string => hCamelize(string);
+
+module.exports.snakify = string => hDepascalize(hPascalize(string)).toUpperCase();

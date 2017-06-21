@@ -1,9 +1,9 @@
-import stateFulView from './stateFulView.json';
-import stateFulViewInFolder from './stateFulViewInFolder.json';
-import stateLessView from './stateLessView.json';
-import stateLessViewInFolder from './stateLessViewInFolder.json';
+const stateFulViewInFolder = require('./stateFulViewInFolder.json');
+const stateFulView = require('./stateFulView.json');
+const stateLessViewInFolder = require('./stateLessViewInFolder.json');
+const stateLessView = require('./stateLessView.json');
 
-export default {
+module.exports = {
     stateFulViewInFolder,
     stateFulView,
     stateLessViewInFolder,

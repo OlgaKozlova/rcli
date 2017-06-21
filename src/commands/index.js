@@ -1,7 +1,7 @@
-import generate from './generate';
-import help from './help';
+const generate = require('./generate');
+const help = require('./help');
 
-export default {
+module.exports = {
     generate,
     help,
 };

@@ -1,21 +1,14 @@
 {
   "name": "react-redux-cli",
   "version": "0.0.1",
-  "description": "Library for scaffolding on react and redux-react projects",
+  "description": "Scaffolding library for react and redux-react projects",
   "main": "index.js",
   "scripts": {
-    "start": "webpack --config .webpack.config.js",
     "lint": "eslint ./ --cache --ignore-pattern .gitignore",
     "test": "mocha --compilers js:babel-core/register ./test/"
   },
   "bin": {
     "rcli": "bin/rcli.sh"
-  },
-  "babel": {
-    "presets": [
-      "stage-3",
-      "latest"
-    ]
   },
   "pre-commit": [
     "lint",
@@ -34,13 +27,11 @@
     "babel-preset-latest": "^6.24.1",
     "babel-preset-stage-3": "^6.24.1",
     "chai": "^4.0.2",
-    "copy-webpack-plugin": "^4.0.1",
     "eslint": "^4.0.0",
     "eslint-config-airbnb-base": "^11.2.0",
     "eslint-plugin-import": "^2.3.0",
     "mocha": "^3.4.2",
-    "pre-commit": "^1.2.2",
-    "webpack": "^3.0.0"
+    "pre-commit": "^1.2.2"
   },
   "directories": {
     "test": "test"

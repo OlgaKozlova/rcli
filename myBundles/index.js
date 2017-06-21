@@ -1,5 +1,5 @@
-import view from './stateFulView.json';
+const view = require('./stateFulView.json');
 
-export default {
+module.exports = {
     view,
 };

@@ -1,1 +1,1 @@
-node ./dist/index.bundle.js $@
+node ./src/index.js $@

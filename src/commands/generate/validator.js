@@ -1,5 +1,5 @@
-import fs from 'fs-extra';
-import path from 'path';
+const fs = require('fs-extra');
+const path = require('path');
 
 const getErrorResult = errors => ({
     isValid: false,
@@ -33,7 +33,7 @@ function checkTemplatesExistency(parameters, options, conf) {
         .map(set => `Invalid filepath found in configuration: ${set.sourceFileName}`);
 }
 
-export default function (parameters, options, conf) {
+module.exports = function validate(parameters, options, conf) {
     const errors = [
         checkMinParams.bind(null, parameters),
         checkMaxParams.bind(null, parameters),
@@ -45,4 +45,4 @@ export default function (parameters, options, conf) {
     }
 
     return getValidResult();
-}
+};

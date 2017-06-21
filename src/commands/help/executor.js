@@ -1,1 +1,3 @@
-export default function () { console.log('Not supported yet'); }
+module.exports = function execute() {
+    console.log('Not supported yet');
+};

@@ -1,7 +1,7 @@
-import path from 'path';
-import fs from 'fs-extra';
-import ejs from 'ejs';
-import * as t from '../../transformers.js';
+const path = require('path');
+const fs = require('fs-extra');
+const ejs = require('ejs');
+const t = require('../../transformers.js');
 
 const getTemplate = (templateType, template, templatePath, defaultTemplatePath) => {
     if (templateType === 'file') {
@@ -36,19 +36,20 @@ const performAction = (action, template, destinationPath) => {
     }
 };
 
-export default function (parameters, options, configuration) {
+module.exports = function execute(parameters, options, configuration) {
     const bundleName = parameters[0];
     const setName = parameters[1];
 
     const bundleConfiguration = configuration.bundles[bundleName];
-    const settings = {
-        ...options,
-        featureName: setName,
-        root: `${configuration.root}/`,
-        t,
-    };
-
-    console.log(configuration);
+    const settings = Object.assign(
+        {},
+        options,
+        {
+            featureName: setName,
+            root: `${configuration.root}`,
+            t,
+        },
+    );
 
     Object.keys(bundleConfiguration).forEach((key) => {
         const config = bundleConfiguration[key];
@@ -62,11 +63,11 @@ export default function (parameters, options, configuration) {
         const destinationTemplate = getTemplate('string', config.destination);
         const compiledDestinationTemplate = getCompiledTemplate(destinationTemplate, settings);
 
-        console.log(`${key} is generating...`);
+        console.log(`${key} is generating on ${compiledDestinationTemplate} path`);
 
         performAction(config.action, compiledSourceTemplate, compiledDestinationTemplate);
     });
 
     console.log('-------');
     console.log('success');
-}
+};
