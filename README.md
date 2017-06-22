@@ -153,6 +153,58 @@ Generates following structure
 ```
 and appends references to newly generated <name>.jsx to the bottom of view.js file in the root of project.
 
+## Custom Bundles
+
+We realize, that project needs differ from project to project and bundles can differ either. If default bundles don't cover your project need you can create your own bundle.
+
+Steps to create new bundle:
+1. Create folder in the root of your project where you will store your bundles, e.g. MyBundles
+2. Add <bundleName>.json file there.
+The structure of <bundleName>.json should be following:
+
+```js
+{  
+  "actions": {
+    "templateType": "file",
+    "template": "actions.ejs",
+    "destination": "<%= root %>/actions/<%= t.capitalize(featureName) %>Actions.js",
+    "action": "create"
+  },
+  "actionsIndex": {
+    "templateType": "string",
+    "template": "export { <%= featureName %>Actions } from './<%= t.capitalize(featureName) %>Actions.js';\n",
+    "destination": "<%= root %>/actions/index.js",
+    "action": "appendBottom"
+  },
+  ...
+}
+```
+This is object, each field of which describes the one item in the bundle for scaffolding.
+Each bundle item is also an object with 4 required properties:
+
+* templateType - "file" || "string"
+* template - ejs string in case of "string" templateType or template(see below) name in case of "file" templateType
+* destination: ejs string for setting the destination path
+* action - "create" || "appendBottom". In case of "create" new file by destination path will be generated (replaced in case of existency). In case of "appendBottom" - new line(s) will be appended to the bottom of given destination file, new file will be created only if destination file doesn't exists.
+
+So using the combination of these settings you can set up any bundle you wish.
+
+3. Export all created bundles to index.js file in your MyBundles folder
+Example:
+```js
+const myView = require('./myView.json');
+
+module.exports = {
+    myView,
+};
+
+```
+
+Now myView bundle name is available for usage in commands
+```
+$ rcli generate myView PerfectView fields: firstName lastName buttons: ok cancel
+```
+
 ## Setting up
 
 ## License
