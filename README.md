@@ -209,17 +209,17 @@ rcli uses templates for scaffolding. By default following set of templates is av
 (output for command ```$ rcli generate stateFulView myView fields: firstName lastName buttons: ok cancel```)
 
 
-* constants.ejs
+* constants
 ```js
 const VIEW_NAME = 'MY_VIEW_';
 
-export const SET_FIRST_NAME_ACTION_MY = `${VIEW_NAME}SET_FIRST_NAME`;
-export const SET_LAST_NAME_ACTION_MY = `${VIEW_NAME}SET_LAST_NAME`;
-export const HANDLE_OK_BUTTON_ACTION_MY = `${VIEW_NAME}HANDLE_OK`;
-export const HANDLE_CANCEL_BUTTON_ACTION_MY = `${VIEW_NAME}HANDLE_CANCEL`;
+export const SET_FIRST_NAME_ACTION = `${VIEW_NAME}SET_FIRST_NAME`;
+export const SET_LAST_NAME_ACTION = `${VIEW_NAME}SET_LAST_NAME`;
+export const HANDLE_OK_BUTTON_ACTION = `${VIEW_NAME}HANDLE_OK`;
+export const HANDLE_CANCEL_BUTTON_ACTION = `${VIEW_NAME}HANDLE_CANCEL`;
 
 ```
-* actions.ejs
+* actions
 ```js
 import {
     SET_FIRST_NAME_ACTION,
@@ -250,7 +250,7 @@ export const MyViewActions = {
 };
 
 ```
-initials
+* initials
 ```js
 import Immutable from 'immutable';
 
@@ -260,7 +260,7 @@ export const MyViewInitialState = new Immutable.Map({
 });
 
 ```
-reducer
+* reducer
 ```js
 import {
     SET_FIRST_NAME_ACTION,
@@ -280,6 +280,52 @@ export const MyViewReducer = (state = {}, action) => {
     }
     }
 };
+
+```
+* selector
+```js
+import { createSelector } from 'reselect';
+
+export const getFirstName = state => state.MyViewState.get('firstName');
+export const getLastName = state => state.MyViewState.get('lastName');
+
+export const MyViewSelector = createSelector(
+    [
+        getFirstName,
+        getLastName,
+    ],
+    (
+        firstName,
+        lastName,
+    ) => {
+        // place code for view selector here
+        return {
+            // place other computed properties here
+            firstName,
+            lastName,
+        };
+    },
+);
+
+```
+* view
+```js
+import React from 'react';
+import { connect } from 'react-redux';
+
+import { MyViewSelector } from '../selectors/MyViewSelectors.js';
+import { MyViewActions } from '../actions/MyViewActions.js';
+import {
+    SET_FIRST_NAME_ACTION,
+    SET_LAST_NAME_ACTION,
+    HANDLE_OK_BUTTON_ACTION,
+    HANDLE_CANCEL_BUTTON_ACTION,
+} from '../constants/MyViewConstants.js';
+
+export const MyView = connect(MyViewSelector, MyViewActions)((props) =>
+    <div></div>
+    // place your components here
+);
 
 ```
 ## Setting up
