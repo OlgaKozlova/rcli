@@ -401,6 +401,57 @@ export const MyView = connect(MyViewSelector, MyViewActions)((props) =>
 );
 
 ```
+## Custom templates
+We realize that templates could differ from project to project. You are allowed to use your own templates. Steps for creating and adding new template are following:
+1. Create folder in the root of your project where you will store your templates, e.g. MyTemplates
+2. Add <templateName>.ejs file there.
+3. Fill in your .ejs file (below are source example):
+```js
+<% var fields = fields || [] -%>
+<% var buttons = buttons || [] -%>
+import {
+<% fields.forEach(function(field){ -%>
+<% const transformedField = t.snakify(field); -%>
+    SET_<%- transformedField %>_ACTION,%>
+<% }); -%>
+<% buttons.forEach(function(button){ -%>
+<% const transformedButton = t.snakify(button); -%>
+    HANDLE_<%- transformedButton %>_BUTTON_ACTION,%>
+<% }); -%>
+} from './<%= t.capitalize(featureName) -%>Constants.js';
+
+export const <%= featureName %>Actions = {
+<% fields.forEach(function(field){ -%>
+<% const transformedField = t.snakify(field); -%>
+    [SET_<%- transformedField %>_ACTION%>]: <%- field %> => ({
+        type: SET_<%- transformedField %>_ACTION,%>
+        payload: {
+            <%- field %>,
+        },
+    }),
+<% }); -%>
+<% buttons.forEach(function(button){ -%>
+<% const transformed = t.snakify(button); -%>
+    [HANDLE_<%- transformed %>_BUTTON_ACTION%>]: () => (dispatch, getState) => {
+        // place here code for button handling
+    },
+<% }); -%>
+};
+
+```
+Inside template following variables are available:
+example is given for 
+```
+$ rcli generate stateFulViewInFolder myView fields: firstName lastName buttons: ok cancel
+```
+* t - transformers (see below)
+* name: myView (name of your view or feature (2nd given parameter))
+* fields: ['firstName', 'lastName']
+* buttons: ['ok', 'cancel']
+any other options you provide appear as array
+* root - root from your settings
+* v - all variables from settings
+
 ## Setting up
 
 ## License
