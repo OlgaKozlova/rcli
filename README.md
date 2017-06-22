@@ -37,11 +37,11 @@ module.exports = {
 ```
 root - will be considered as the root of your project while scaffolding
 
-templates - path to your custom templates folder (see below)
+templates - path to your [custom templates]() folder
 
-bundles - object containing your custom bundles (see below)
+bundles - object containing your [custom bundles]()
 
-v - object with any variable you need in your custom templates
+v - object with any variable you need in your [custom templates]()
 
 
 ## Usage
