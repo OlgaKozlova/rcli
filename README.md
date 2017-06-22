@@ -50,17 +50,24 @@ Following commands are available:
 * help
 
 ### Generate
+
 ```generate``` command allows you to generate new bundle of files. 
+
 Parameters: 
+
 ```generate``` accepts 2 required parameters:
 * bundleName - name of bundle that will be used for scaffolding
-* name - name of your feature or view
-Options:
-```generate``` accepts any amount of options in format <optionName1>: option11 option12 ... option1N <optionName2>: option21 option22 ... option2N ... <optionNameM>: optionM1 optionM2 ... optionMN
+* name - name of your feature | view | component
 
-Exaple:
+Options:
+
+```generate``` accepts any amount of options in format:
+
+<optionName1>: option11 option12 ... option1N <optionName2>: option21 option22 ... option2N ... <optionNameM>: optionM1 optionM2 ... optionMN
+
+Example:
 ```
-$ rcli generate view myPerfectView fields: firstName lastName buttons: ok cancel
+$ rcli generate view myPerfectView fields: firstName lastName gender birthday buttons: ok cancel
 ```
 
 ## Setting up
