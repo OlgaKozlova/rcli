@@ -63,7 +63,7 @@ Options:
 
 ```generate``` accepts any amount of options in format:
 
-<optionName1>: option11 option12 ... option1N <optionName2>: option21 option22 ... option2N ... <optionNameM>: optionM1 optionM2 ... optionMN
+```<optionName1>: option11 option12 ... option1N <optionName2>: option21 option22 ... option2N ... <optionNameM>: optionM1 optionM2 ... optionMN```
 
 Example:
 ```
