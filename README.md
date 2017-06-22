@@ -56,7 +56,7 @@ Following commands are available:
 Parameters: 
 
 ```generate``` accepts 2 required parameters:
-* bundleName - name of bundle that will be used for scaffolding
+* bundleName - name of bundle that will be used for scaffolding. See description below.
 * name - name of your feature | view | component
 
 Options:
@@ -69,6 +69,89 @@ Example:
 ```
 $ rcli generate view myPerfectView fields: firstName lastName gender birthday buttons: ok cancel
 ```
+
+### Help
+
+```help``` command is not supported yet. 
+
+## Bundles
+
+```generate``` command uses bundles for scaffolding. Bundle is a named set of items to be scaffolded.
+
+Following default bundles are supported:
+* stateFulView
+
+Generates following structure
+```
+<root>
+    constants
+        <name>Constants.js
+    actions
+        <name>Actions.js
+    reducers
+        <name>Reducer.js
+        index.js
+    selectors
+        <name>Selector.js
+    views
+        <name>.jsx
+        index.js
+    initials
+        <name>Initial.js
+        index.js        
+```
+and appends references to newly generated <name>Reducer.js, <name>.jsx and <name>Initial.js to the bottom of index.js files in appropriate folder.
+
+* stateLessView
+
+Generates following structure
+```
+<root>
+    constants
+        <name>Constants.js
+    actions
+        <name>Actions.js    
+    selectors
+        <name>Selector.js
+    views
+        <name>.jsx
+        index.js
+```
+and appends references to newly generated <name>.jsx to the bottom of index.js files in appropriate folder.
+
+* stateFulViewInFolder
+
+Generates following structure
+```
+<root>
+    <name>
+        <name>Constants.js
+        <name>Actions.js
+        <name>Reducer.js
+        <name>Selector.js
+        <name>Initial.js
+        <name>.jsx
+    views.js
+    reducers.js
+    initials.js
+```
+and appends references to newly generated <name>Reducer.js, <name>.jsx and <name>Initial.js to the bottom of reducers.js, view.js and initials.js files in the root of project.
+
+* stateLessViewInFolder
+
+Generates following structure
+```
+<root>
+    <name>
+        <name>Constants.js
+        <name>Actions.js
+        <name>Selector.js
+        <name>.jsx
+    views.js
+    reducers.js
+    initials.js
+```
+and appends references to newly generated <name>.jsx to the bottom of view.js file in the root of project.
 
 ## Setting up
 
