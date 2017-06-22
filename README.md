@@ -20,6 +20,25 @@ Global installation
 ```
 $ npm install rcli -g
 ```
+## Setting up
+For setting up the library place ```.rcli.config.js``` file in the root of your working directory.
+The example of configuration file:
+```js
+var bundles = require('./myBundles');
+
+module.exports = {
+    root: './MyRoot',
+    templates: './myTemplates',
+    bundles,
+    v: {
+        myVar: 'Hello'
+    }
+};
+```
+root - will be considered as the root of your project while scaffolding
+templates - path to your custom templates folder (see below)
+bundles - object containing your custom bundles (see below)
+v - object with any variable you need in your custom templates
 
 ## Usage
 
@@ -437,7 +456,6 @@ export const <%= featureName %>Actions = {
     },
 <% }); -%>
 };
-
 ```
 Inside template following variables are available:
 example is given for 
@@ -448,11 +466,17 @@ $ rcli generate stateFulViewInFolder myView fields: firstName lastName buttons: 
 * name: myView (name of your view or feature (2nd given parameter))
 * fields: ['firstName', 'lastName']
 * buttons: ['ok', 'cancel']
+
 any other options you provide appear as array
 * root - root from your settings
 * v - all variables from settings
 
-## Setting up
+## Transformers
+Following string transforming functions are available in ```t``` option inside template
+* snakify: "myView" => "MY_VIEW"
+* camelize: "my-view" => "myView"
+* capitalize: "myView" => "MyView"
+* decapitalize: "MyView" => "myView"
 
 ## License
 
