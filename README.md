@@ -250,6 +250,37 @@ export const MyViewActions = {
 };
 
 ```
+* actionsInFolder
+```js
+import {
+    SET_FIRST_NAME_ACTION,
+    SET_LAST_NAME_ACTION,
+    HANDLE_OK_BUTTON_ACTION,
+    HANDLE_CANCEL_BUTTON_ACTION,
+} from './MyViewConstants.js';
+
+export const MyViewActions = {
+    [SET_FIRST_NAME_ACTION]: firstName => ({
+        type: SET_FIRST_NAME_ACTION,
+        payload: {
+            firstName,
+        },
+    }),
+    [SET_LAST_NAME_ACTION]: lastName => ({
+        type: SET_LAST_NAME_ACTION,
+        payload: {
+            lastName,
+        },
+    }),
+    [HANDLE_OK_BUTTON_ACTION]: () => (dispatch, getState) => {
+        // place here code for button handling
+    },
+    [HANDLE_CANCEL_BUTTON_ACTION]: () => (dispatch, getState) => {
+        // place here code for button handling
+    },
+};
+
+```
 * initials
 ```js
 import Immutable from 'immutable';
@@ -266,6 +297,28 @@ import {
     SET_FIRST_NAME_ACTION,
     SET_LAST_NAME_ACTION,
 } from '../constants/MyViewConstants.js';
+
+export const MyViewReducer = (state = {}, action) => {
+    switch (action.type) {
+    case SET_FIRST_NAME_ACTION : {
+        return state.set('firstName', action.payload.firstName);
+    }
+    case SET_LAST_NAME_ACTION : {
+        return state.set('lastName', action.payload.lastName);
+    }
+    default: {
+        return state;
+    }
+    }
+};
+
+```
+* reducerInFolder
+```js
+import {
+    SET_FIRST_NAME_ACTION,
+    SET_LAST_NAME_ACTION,
+} from './MyViewConstants.js';
 
 export const MyViewReducer = (state = {}, action) => {
     switch (action.type) {
@@ -321,6 +374,26 @@ import {
     HANDLE_OK_BUTTON_ACTION,
     HANDLE_CANCEL_BUTTON_ACTION,
 } from '../constants/MyViewConstants.js';
+
+export const MyView = connect(MyViewSelector, MyViewActions)((props) =>
+    <div></div>
+    // place your components here
+);
+
+```
+* viewInFolder
+```js
+import React from 'react';
+import { connect } from 'react-redux';
+
+import { MyViewSelector } from './MyViewSelectors.js';
+import { MyViewActions } from './MyViewActions.js';
+import {
+    SET_FIRST_NAME_ACTION,
+    SET_LAST_NAME_ACTION,
+    HANDLE_OK_BUTTON_ACTION,
+    HANDLE_CANCEL_BUTTON_ACTION,
+} from './MyViewConstants.js';
 
 export const MyView = connect(MyViewSelector, MyViewActions)((props) =>
     <div></div>
