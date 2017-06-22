@@ -204,7 +204,84 @@ Now myView bundle name is available for usage in commands
 ```
 $ rcli generate myView PerfectView fields: firstName lastName buttons: ok cancel
 ```
+## Templates
+rcli uses templates for scaffolding. By default following set of templates is available:
+(output for command ```$ rcli generate stateFulView myView fields: firstName lastName buttons: ok cancel```)
 
+
+* constants.ejs
+```js
+const VIEW_NAME = 'MY_VIEW_';
+
+export const SET_FIRST_NAME_ACTION_MY = `${VIEW_NAME}SET_FIRST_NAME`;
+export const SET_LAST_NAME_ACTION_MY = `${VIEW_NAME}SET_LAST_NAME`;
+export const HANDLE_OK_BUTTON_ACTION_MY = `${VIEW_NAME}HANDLE_OK`;
+export const HANDLE_CANCEL_BUTTON_ACTION_MY = `${VIEW_NAME}HANDLE_CANCEL`;
+
+```
+* actions.ejs
+```js
+import {
+    SET_FIRST_NAME_ACTION,
+    SET_LAST_NAME_ACTION,
+    HANDLE_OK_BUTTON_ACTION,
+    HANDLE_CANCEL_BUTTON_ACTION,
+} from '../constants/MyViewConstants.js';
+
+export const MyViewActions = {
+    [SET_FIRST_NAME_ACTION]: firstName => ({
+        type: SET_FIRST_NAME_ACTION,
+        payload: {
+            firstName,
+        },
+    }),
+    [SET_LAST_NAME_ACTION]: lastName => ({
+        type: SET_LAST_NAME_ACTION,
+        payload: {
+            lastName,
+        },
+    }),
+    [HANDLE_OK_BUTTON_ACTION]: () => (dispatch, getState) => {
+        // place here code for button handling
+    },
+    [HANDLE_CANCEL_BUTTON_ACTION]: () => (dispatch, getState) => {
+        // place here code for button handling
+    },
+};
+
+```
+initials
+```js
+import Immutable from 'immutable';
+
+export const MyViewInitialState = new Immutable.Map({
+    firstName: '',
+    lastName: '',
+});
+
+```
+reducer
+```js
+import {
+    SET_FIRST_NAME_ACTION,
+    SET_LAST_NAME_ACTION,
+} from '../constants/MyViewConstants.js';
+
+export const MyViewReducer = (state = {}, action) => {
+    switch (action.type) {
+    case SET_FIRST_NAME_ACTION : {
+        return state.set('firstName', action.payload.firstName);
+    }
+    case SET_LAST_NAME_ACTION : {
+        return state.set('lastName', action.payload.lastName);
+    }
+    default: {
+        return state;
+    }
+    }
+};
+
+```
 ## Setting up
 
 ## License
